@@ -1,0 +1,51 @@
+/* general tags */
+* {
+    font-family: monospace;
+}
+
+body {
+    background-color: black;
+    color: lime;
+}
+
+header {
+    background-color: lime;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: black;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+
+section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 80px;
+}
+
+h2 {
+    border-bottom: 5px solid lime;
+}
+
+a {
+    color: lime;
+}
+a:hover {
+    color: green;
+}
+
+/* cards classes */
+.card {
+    max-width: 250px;
+    min-width: 200px;
+    max-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid lime;
+}
