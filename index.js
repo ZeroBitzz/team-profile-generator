@@ -66,19 +66,23 @@ async function gatherInfo() {
     let html = '<html><head><link rel="stylesheet" href="./styles/style.css"></head><body><header>MY TEAM</header><section>';
     let employeeId = 1
     for (let employee of employees) {
+        // gets the role specific value of each employee to display on page
         let roleSpecificString
         if(employee.role === "Intern"){
             roleSpecificString = `School: ${employee.school}`
         }else if(employee.role === "Engineer"){
-            roleSpecificString = `<a href="mailto: ${employee.email}">Email: ${employee.email}</a>`
+            roleSpecificString = `<a href="https://github.com/${employee.github}" target="_blank">Github: ${employee.github}</a>`
         }else {
             roleSpecificString = `Office number: ${employee.officeNum}`
         }
+
+        // creates the html for page
         html += `<div class="card">
             <h2>${employee.name}</h2>
             <p>ID: ${employeeId}</p>
             <p>Role: ${employee.role}</p>
             <p>${roleSpecificString}</p>
+            <p><a href="mailto: ${employee.email}">Email: ${employee.email}</a></p>
         </div>`;
         employeeId++
     }
