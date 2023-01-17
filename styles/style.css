@@ -38,6 +38,11 @@ a:hover {
     color: green;
 }
 
+::selection {
+    /* Change highlight background color to black */
+    background: green;
+}
+
 /* cards classes */
 .card {
     max-width: 250px;
