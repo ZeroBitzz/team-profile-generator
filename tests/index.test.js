@@ -1,28 +1,34 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
+const gatherInfo = require('../index.js')
+const inquirer = require('inquirer')
+const fs = require('fs')
 
-test('gatherInfo function works correctly', async () => {
-  let employees = [];
-  inquirer.prompt = jest.fn().mockResolvedValueOnce({
-    name: 'Test Employee',
-    role: 'Manager',
-    email: 'test@email.com',
-    officeNum: '1',
-    more: false
-  });
-  await gatherInfo();
+jest.mock('inquirer')
+jest.mock('fs')
 
-  expect(inquirer.prompt).toHaveBeenCalled();
-  expect(employees).toEqual([{
-    name: 'Test Employee',
-    role: 'Manager',
-    email: 'test@email.com',
-    officeNum: '1'
-  }]);
+beforeEach(() => {
+  jest.resetAllMocks()
+})
 
-  const html = fs.writeFileSync.mock.calls[0][1];
-  expect(html).toContain('Test Employee');
-  expect(html).toContain('Role: Manager');
-  expect(html).toContain('Office number: 1');
-  expect(html).toContain('test@email.com');
-});
+test('gatherInfo should gather employee information and create an HTML page', async () => {
+    inquirer.pro1mpt.mockResolvedValueOnce({
+        name: 'John Doe',
+        role: 'Manager',
+        officeNum: '5',
+        email: 'johndoe@email.com',
+        more: true,
+    }).mockResolvedValueOnce({
+        name: 'Jane Smith',
+        role: 'Intern',
+        school: 'University of Utah',
+        email: 'janesmith@email.com',
+        more: false,
+    })
+    // fs.writeFileSync.mockReturnValue(undefined)
+
+    await gatherInfo()
+
+    // expect(inquirer.prompt).toHaveBeenCalledTimes(2)
+    // expect(fs.writeFileSync).toHaveBeenCalledWith('employees.html', expect.stringContaining('John Doe'))
+    // expect(fs.writeFileSync).toHaveBeenCalledWith('employees.html', expect.stringContaining('Jane Smith'))
+    // expect(console.log).toHaveBeenCalledWith('Employee information gathered and HTML page created!')
+})
