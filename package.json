@@ -4,7 +4,7 @@
   "description": "Want to have a simplified layout of your team and their info? Use this app I guess?",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest index.test.js",
     "start": "node index.js"
   },
   "repository": {
@@ -19,5 +19,8 @@
   "homepage": "https://github.com/ZeroBitzz/team-profile-generator#readme",
   "dependencies": {
     "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
   }
 }

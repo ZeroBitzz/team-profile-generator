@@ -38,6 +38,7 @@ a:hover {
     color: green;
 }
 
+/* highlight color selector */
 ::selection {
     /* Change highlight background color to black */
     background: green;
