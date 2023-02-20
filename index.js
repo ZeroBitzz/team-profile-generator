@@ -6,7 +6,7 @@ const fs = require('fs')
 let employees = []
 
 // asynchronous function gatherInfo that asks the user questions about the employees and adds them and the corresponding information to the employees array
-async function gatherInfo() {
+async function gatherEmployeeInfo() {
     let moreEmployees = true
     // while loop to get as many employees as needed
     while (moreEmployees) {
@@ -61,7 +61,10 @@ async function gatherInfo() {
         employees.push({ name, role, school, email, github, officeNum })
         moreEmployees = more
     }
-    // TODO separate into 3 separate functions for single responsibility
+    createHTML()
+}
+
+function createHTML() {
     // creates html page for the information 
     let html = '<html><head><link rel="stylesheet" href="./styles/style.css"></head><body><header>MY TEAM</header><section>'
     let employeeId = 1
@@ -75,7 +78,6 @@ async function gatherInfo() {
         }else {
             roleSpecificString = `Office number: ${employee.officeNum}`
         }
-
         // creates the html for page
         html += `<div class="card">
             <h2>${employee.name}</h2>
@@ -90,6 +92,7 @@ async function gatherInfo() {
     fs.writeFileSync('employees.html', html)
     console.log('Employee information gathered and HTML page created!')
 }
-gatherInfo()
 
-module.exports = gatherInfo
+gatherEmployeeInfo()
+
+module.exports = gatherEmployeeInfo
