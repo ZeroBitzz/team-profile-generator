@@ -16,12 +16,13 @@ describe('create a HTML template from answers', () => {
     const html = createHtml(employees)
 
     // Assert
-    const expectedResult = `<html><head><link rel="stylesheet" href="./styles/style.css"><title>Employees</title></head>` +
+    const expectedResult = `<html><head><link rel="stylesheet" href="./style.css"><title>Employees</title></head>` +
       `<body><header>MY TEAM</header><section><div class="card"><h2>${employees[0].name}</h2>` +
       `<p>ID: 1</p><p>Role: ${employees[0].role}</p><p><a href="https://github.com/zerobitzz" target="_blank">Github: ${employees[0].github}</a></p>` +
       `<p><a href="mailto: ${employees[0].email}">Email: ${employees[0].email}</a></p></div></section></body></html>`
 
     expect(html).toEqual(expectedResult)
+    console.log(`${html} to equal ${expectedResult}`)
   })
 
   it('should throw error when no name is provided', () => {
